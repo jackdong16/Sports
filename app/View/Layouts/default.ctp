@@ -16,37 +16,27 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		//echo $this->Html->css('cake.generic');
+		echo $this->Html->css(array('app','bootstrap.min','bootstrap-responsive.min','font-awesome.min'));
+
+		echo $this->Html->script('bootstrap.min');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	<style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 </head>
-  <body>
+<body>
   	<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -55,12 +45,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">SportHighlight</a>
+          <a class="brand" href="/">SportHighlight</a>
           <div class="nav-collapse collapse">
             
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About Me</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li><?php echo $this->Html->link('About Me', '/pages/about_me'); ?></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -68,37 +58,19 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     </div>
 
     <div class="container-fluid">
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Watch sports highlights</h1>
-        <p>That is all.</p>
-      </div>
 
-      <!-- Example row of columns -->
-      <div class="row-fluid">
-        <div class="span4">
-          <h2>NBA</h2>
-          <p></p>
-          <p><a class="btn" href="#">View details »</a></p>
-        </div>
-        <div class="span4">
-          <h2>NFL</h2>
-          <p></p>
-          <p><a class="btn" href="#">View details »</a></p>
-       </div>
-        <div class="span4">
-          <h2>NHL</h2>
-          <p></p>
-          <p><a class="btn" href="#">View details »</a></p>
-        </div>
-      </div>
+		<?php echo $this->Session->flash(); ?>
 
-      <hr>
+		<?php echo $this->fetch('content'); ?>
 
-      <footer>
+	<footer>
         <p>© @jackdong16</p>
-      </footer>
+    </footer>
 
-    </div>
-  </body>
+	</div>
 
+	
+
+	<?php echo $this->element('sql_dump'); ?>
+</body>
+</html>
